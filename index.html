@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>科技与生活</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+
+        /* HTML5结构标签样式 */
+        header, nav, section, aside, article, footer {
+            display: block;
+        }
+
+        /* 页面容器 */
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部样式 */
+        header {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            /* CSS3效果：渐变+阴影 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 导航栏样式（水平排列+虚拟超链接） */
+        nav {
+            width: 100%;
+            height: 50px;
+            background: #f8f9fa;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            line-height: 50px;
+        }
+        nav ul li {
+            width: 150px;
+            text-align: center;
+        }
+        /* 虚拟超链接样式 */
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+            font-size: 19px;
+        }
+
+        /* 主体内容区（浮动定位布局） */
+        .content {
+            width: 100%;
+            margin-top: 20px;
+            overflow: hidden; /* 清除浮动 */
+        }
+        .main {
+            width: 75%;
+            float: left;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .aside {
+            width: 23%;
+            float: right;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        /* 段落文字样式 */
+        .main h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        .main p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            text-indent: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* 图片样式 */
+        .tech-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+            /* CSS3图片效果：圆角+阴影+过渡 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .tech-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* 表单样式 */
+        .form-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .form-box h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .form-box input {
+            width: 100%;
+            height: 40px;
+            margin: 8px 0;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-box button {
+            width: 120px;
+            height: 40px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .form-box button:hover {
+            background: #2980b9;
+        }
+
+        /* 页脚样式 */
+        footer {
+            width: 100%;
+            height: 80px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            line-height: 80px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+    <!-- 引入jQuery（用于JS动态效果） -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // JS动态效果：页面加载完成后执行
+        $(function() {
+            // 导航栏滚动吸顶效果
+            $(window).scroll(function() {
+                let scrollTop = $(window).scrollTop();
+                if (scrollTop > 160) {
+                    $("nav").css({
+                        "position": "fixed",
+                        "top": 0,
+                        "left": 0,
+                        "width": "100%",
+                        "z-index": 999"
+                    });
+                } else {
+                    $("nav").css("position", "static");
+                }
+            });
+
+            // 图片点击放大效果
+            $(".tech-img").click(function() {
+                $(this).toggleClass("zoom");
+            });
+
+            // 表单提交提示
+            $("button").click(function(e) {
+                e.preventDefault();
+                alert("感谢您的留言，我们会尽快回复！");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>科技与生活</header>
+
+        <!-- 导航栏 -->
+        <nav>
+            <ul>
+                <li><a href=" ">首页</a ></li>
+                <li><a href="javascript:void(0)">科技前沿</a ></li>
+                <li><a href="javascript:void(0)">生活应用</a ></li>
+                <li><a href="javascript:void(0)">未来趋势</a ></li>
+                <li><a href="javascript:void(0)">联系我们</a ></li>
+            </ul>
+        </nav>
+
+        <!-- 主体内容区 -->
+        <div class="content">
+            <article class="main">
+                <h2>科技如何改变我们的生活</h2>
+                <p>
+                    从智能手机到人工智能，从5G网络到智能家居，科技已经深度融入我们生活的方方面面。清晨，智能闹钟根据睡眠数据唤醒你；出门前，智能家居自动关闭电器、调节安防；通勤路上，导航软件为你规划最优路线；工作中，AI工具帮你高效完成文案、数据处理；闲暇时，短视频、直播、云游戏丰富了娱乐生活。科技不再是遥远的实验室概念，而是渗透在衣食住行的每一个细节里。
+                </p >
+                <p>
+                    医疗科技的进步让远程问诊成为常态，AI辅助诊断提升了疾病筛查的准确率；新能源技术让绿色出行成为可能，太阳能、风能等清洁能源正在改变能源结构；元宇宙、VR/AR技术为教育、文旅带来全新体验，让知识学习更生动、场景体验更沉浸。科技的发展，不仅提升了生活的便利度，更拓展了人类的认知边界，让未来充满无限可能。
+                </p >
+
+                <!-- 图片 -->
+                < img src="tech-life.jpg" alt="科技与生活" class="tech-img">
+
+                <!-- 表单 -->
+                <div class="form-box">
+                    <h3>留下你的看法</h3>
+                    <input type="text" placeholder="请输入你的姓名">
+                    <input type="email" placeholder="请输入你的邮箱">
+                    <input type="text" placeholder="请输入你对科技生活的看法" style="height: 80px;">
+                    <button>提交留言</button>
+                </div>
+            </article>
+
+            <aside class="aside">
+                <h3>科技热点</h3>
+                <ul>
+                    <li>AI大模型的发展与应用</li>
+                    <li>6G技术的未来展望</li>
+                    <li>智能家居的普及趋势</li>
+                    <li>新能源汽车的技术突破</li>
+                    <li>元宇宙的落地场景</li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>© 2025 科技与生活 个人网页设计</footer>
+    </div>
+</body>
+</html>
